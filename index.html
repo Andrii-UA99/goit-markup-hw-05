@@ -467,7 +467,7 @@
         </div>
         <div class="footer-bloc-input">
           <p class="footer-text-link">Subscribe</p>
-          <div class="footer-input-element">
+          <form class="footer-input-element">
             <input
               type="email"
               name="email-footer"
@@ -480,7 +480,7 @@
                 <use href="./images/icons.svg#icon-frame"></use>
               </svg>
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </footer>
@@ -544,17 +544,25 @@
               placeholder="Text input"
             ></textarea>
           </div>
+
+          <!-- checkboks -->
+
           <input
             type="checkbox"
             name="privacy"
             id="privacy"
             required
-            class="modal-check"
+            class="modal-check visually-hidden"
           />
           <label for="privacy" class="check-text"
-            ><span></span>I accept the terms and conditions of the
+            ><span class="check-text-icon">
+              <svg width="10" height="8" class="vector-icon">
+                <use href="./images/icons.svg#icon-vector"></use></svg></span
+            >I accept the terms and conditions of the
             <a href="" class="check-link">Privacy Policy</a></label
           >
+
+          <!-- button -->
           <button type="submit" class="btn-modal-submit">Send</button>
         </form>
       </div>
