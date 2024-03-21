@@ -617,12 +617,14 @@ border: 1px solid #ffffff;
 .backdrop {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(46, 47, 66, 0.4);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-open {
@@ -641,19 +643,26 @@ border: 1px solid #ffffff;
     background-color: #fcfcfc;
     border-radius: 4px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 2px 1px 0 rgba(0, 0, 0, 0.2);
-    padding: 24px 31px 24px 17px;
+    padding: 72px 24px 24px 24px;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 .close-btn {
-    display: block;
-    margin-left: auto;
+    position: absolute;
+    display: flex;
+    top: 24px;
+    right: 24px;
+    /* margin-left: auto; */
     width: 24px;
     height: 24px;
-    border-radius: 100%;
-    border-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #e7e9fc;
-    position: relative;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close-icon {
@@ -667,11 +676,21 @@ transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 .close-btn:hover {
     background-color: #404bbf;
-}
-.close-btn:hover .close-icon {
-fill: #fff;
+    border: none;
 }
 
+.close-btn:focus {
+    background-color: #404bbf;
+    border: none;
+}
+
+.close-btn:hover .close-icon {
+fill: #ffffff;
+}
+
+.close-btn:focus .close-icon {
+fill: #ffffff;
+}
 
 .text-modal {
         font-weight: 500;
@@ -685,7 +704,7 @@ fill: #fff;
 }
 
 .modal-fill {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
 .modal-input {
@@ -695,6 +714,7 @@ fill: #fff;
         border-radius: 4px;
         margin-top: 4px;
         padding-left: 38px;
+        background-color: transparent;
         outline: transparent;
         transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -721,10 +741,12 @@ transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .label-modal {
+    display: block;
     font-size: 12px;
-    line-height: 1.16;
+    line-height: 1.17;
     letter-spacing: 0.04em;
     color: #8e8f99;
+    margin-bottom: 4px;
 }
 
 .textarea-modal {
@@ -732,12 +754,16 @@ transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
         border-radius: 4px;
         width: 100%;
         height: 120px;
-        transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
         resize: none;
+        background-color: transparent;
         outline: transparent;
         margin-top: 4px;
-        padding-left: 16px;
-        padding-top: 8px;
+        padding: 8px 16px;
+        font-size: 12px;
+        line-height: 1.17;
+        letter-spacing: 0.04em;
+        color: rgba(46, 47, 66, 0.4);
+        transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .textarea-modal:focus {
@@ -747,19 +773,23 @@ transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 .textarea-modal::placeholder {
     font-weight: 400;
     font-size: 12px;
-    line-height: 1.16;
-    letter-spacing: 0.04em;
-    color: rgba(46, 47, 66, 0.4);
+        line-height: 1.17;
+            letter-spacing: 0.04em;
+            color: rgba(46, 47, 66, 0.4);
 }
 
 /* =========== checkboks ================= */
+
+.checkbox-container {
+margin-bottom: 24px;
+}
 
 .check-text {
     display: flex;
     align-items: center;
     font-weight: 400;
     font-size: 12px;
-    line-height: 1.16;
+    line-height: 1.17;
     letter-spacing: 0.04em;
     color: #8e8f99;
     margin-top: 16px;
@@ -778,7 +808,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 fill: transparent;
-transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .check-text-icon:active {
@@ -789,38 +819,38 @@ background-color: #404bbf;
 
 .modal-check:checked + .check-text span {
 background-color: #404bbf;
-border: none;
-fill: #f4f4fd;
+    border: none;
+    fill: #F4F4FD;
 }
 
 
 .check-link {
+    color: #4d5ae5;
     line-height: 1.33;
-        text-decoration: underline;
-        text-decoration-skip-ink: none;
-        color: #4d5ae5;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
 }
 
 
 /* ==============  button modal ============= */
 .btn-modal-submit {
-    border: none;
-    display: block;
+display: block;
+border: none;
 border-radius: 4px;
 padding: 16px 32px;
-width: 169px;
+min-width: 169px;
 height: 56px;
 margin: auto;
-background-color: #4d5ae5;;
+background-color: #4D5AE5;
 box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 cursor: pointer;
 font-family: "Roboto", sans-serif;
 font-weight: 500;
 font-size: 16px;
 line-height: 1.5;
-letter-spacing: 0.04em;
-text-align: center;
-color: #fff;
+    letter-spacing: 0.04em;
+    text-align: center;
+color: #ffffff;
 transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
